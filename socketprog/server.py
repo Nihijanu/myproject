@@ -1,10 +1,11 @@
 import socket
 s=socket.socket()
+print("connecting")
 s.bind((socket.gethostname(),1000))
-s.listen()
+s.listen(3)
+print("waiting for connection")
 while True:
-    c,add=s.accept()
+    clie, add=s.accept()
     print(add)
-    c.send(bytes("hi client","utf-8").decode())
-
-    s.close()
+    clie.send(bytes("hi client","utf-8"))
+    clie.close()
